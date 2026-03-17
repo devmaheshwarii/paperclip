@@ -32,6 +32,7 @@ RUN pnpm --filter @paperclipai/shared build
 RUN pnpm --filter @paperclipai/plugin-sdk build
 RUN pnpm --filter @paperclipai/ui build
 RUN pnpm --filter @paperclipai/server build
+RUN cp -r ui/dist server/ui-dist
 RUN test -f server/dist/index.js || (echo "ERROR: server build output missing" && exit 1)
 
 FROM base AS production
